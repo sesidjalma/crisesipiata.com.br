@@ -1,0 +1,398 @@
+<pagina-unodc.html/>
+<html lang="pt-BR">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clube de Relações Internacionais - UNDOC</title>
+  <style>
+    /* ==================== RESET ==================== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    /* ==================== CABEÇALHO ==================== */
+    .top-bar {
+      background: #fff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 30px;
+      border-bottom: 2px solid #e5e5e5;
+      flex-wrap: wrap;
+    }
+
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .logo-img {
+      height: 60px;
+    }
+
+    .club-name h1 {
+      font-size: 1.2rem;
+      font-weight: 900;
+      color: #000;
+    }
+
+    .club-name span {
+      font-size: 0.85rem;
+      font-weight: 500;
+      background: #fff;
+      border: 1px solid #ccc;
+      padding: 2px 6px;
+      border-radius: 12px;
+      display: inline-block;
+      margin-top: 3px;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      flex-wrap: wrap;
+    }
+
+    nav ul li {
+      margin-left: 20px;
+    }
+
+    nav ul li a {
+      color: #000;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s;
+    }
+
+    nav ul li a:hover {
+      color: #007bff;
+    }
+
+    nav ul li a.highlight {
+      background: #012b65;
+      color: #fff;
+      padding: 8px 14px;
+      border-radius: 6px;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+
+    nav ul li a.highlight:hover {
+      background: #c81d3c;
+    }
+
+    /* Botão hambúrguer */
+    .menu-toggle {
+      display: none;
+      font-size: 1.8rem;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    /* ==================== HERO ==================== */
+    .bg-gradient {
+      background: linear-gradient(to right, #c81d3c, #ffffff, #012b65);
+    }
+
+    .hero {
+      height: 60vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: #0d1b2a; /* cor escura legível sobre degradê */
+      padding: 20px;
+    }
+
+    .hero h1 {
+      font-size: 2rem;
+      font-weight: 900;
+      margin-bottom: 10px;
+      color: #0d1b2a; /* cor escura legível */
+    }
+
+    .hero p {
+      font-size: 1rem;
+      margin-bottom: 20px;
+      color: #0d1b2a; /* cor escura legível */
+    }
+
+    .btn-cta {
+      background: #012b65;
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .btn-cta:hover {
+      background: #c81d3c;
+    }
+
+    /* ==================== COMITÊ ==================== */
+    .committee-header {
+      text-align: center;
+      padding: 40px 20px;
+      background: #f7f7f7;
+    }
+
+    .committee-header h1 {
+      color: #012b65;
+      margin-bottom: 20px;
+    }
+
+    .committee-links a {
+      margin: 5px 10px;
+      text-decoration: none;
+      color: #007bff;
+      font-weight: 500;
+      display: inline-block;
+    }
+
+    .committee-description {
+      padding: 40px 20px;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    .committee-description h2 {
+      color: #012b65;
+      margin-bottom: 15px;
+    }
+
+    .committee-description p {
+      margin-bottom: 15px;
+      text-align: justify;
+      line-height: 1.6;
+    }
+
+    .committee-list {
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    .committee-list h2 {
+      color: #012b65;
+      margin-bottom: 10px;
+    }
+
+    .committee-list .note {
+      font-size: 0.9rem;
+      margin-bottom: 20px;
+    }
+
+    .country-list {
+      max-width: 400px;
+      margin: auto;
+      text-align: left;
+      line-height: 1.8;
+    }
+
+    .country-list li a {
+      color: #007bff;
+      text-decoration: none;
+    }
+
+    .country-list li a.unavailable {
+      color: #888;
+      pointer-events: none;
+    }
+
+   /* ==================== RODAPÉ ==================== */
+    .footer {
+      background: linear-gradient(to right, #012b65, #c81d3c);
+      color: #fff;
+      text-align: center;
+      padding: 15px;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 768px) {
+      .info {
+        flex-direction: column;
+        text-align: center;
+      }
+      .trapezoid, .trapezoid-bottom {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* ==================== RESPONSIVIDADE ==================== */
+    @media (max-width: 768px) {
+      .top-bar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+      }
+
+      nav {
+        display: none;
+        width: 100%;
+        background: #fff;
+        border-top: 1px solid #ccc;
+      }
+
+      nav.active {
+        display: block;
+      }
+
+      nav ul {
+        flex-direction: column;
+        padding: 10px 0;
+      }
+
+      nav ul li {
+        margin: 10px 0;
+        text-align: center;
+      }
+
+      nav ul li a {
+        display: block;
+        padding: 10px;
+        font-size: 1.1rem;
+      }
+
+      .menu-toggle {
+        display: block;
+        color: #012b65;
+      }
+
+      .club-name h1 {
+        font-size: 1rem;
+      }
+
+      .hero {
+        height: auto;
+        padding: 60px 20px;
+      }
+
+      .hero h1 {
+        font-size: 1.6rem;
+      }
+
+      .hero p {
+        font-size: 0.95rem;
+      }
+
+      .committee-header h1 {
+        font-size: 1.3rem;
+      }
+
+      .committee-description h2 {
+        font-size: 1.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- CABEÇALHO -->
+  <header class="top-bar">
+    <div class="header-left">
+      <img alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA8CAYAAAA6/NlyAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAEumlUWHRYTUw6Y29tLmFkb2JlLnhtcAAAAAAAPD94cGFja2V0IGJlZ2luPSfvu78nIGlkPSdXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQnPz4KPHg6eG1wbWV0YSB4bWxuczp4PSdhZG9iZTpuczptZXRhLyc+CjxyZGY6UkRGIHhtbG5zOnJkZj0naHR0cDovL3d3dy53My5vcmcvMTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyc+CgogPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9JycKICB4bWxuczpBdHRyaWI9J2h0dHA6Ly9ucy5hdHRyaWJ1dGlvbi5jb20vYWRzLzEuMC8nPgogIDxBdHRyaWI6QWRzPgogICA8cmRmOlNlcT4KICAgIDxyZGY6bGkgcmRmOnBhcnNlVHlwZT0nUmVzb3VyY2UnPgogICAgIDxBdHRyaWI6Q3JlYXRlZD4yMDI1LTA5LTAzPC9BdHRyaWI6Q3JlYXRlZD4KICAgICA8QXR0cmliOkV4dElkPjVmYzIxODJjLWYyYTItNGM2YS05OTcyLTI4ZTMxNWM4YmU2NTwvQXR0cmliOkV4dElkPgogICAgIDxBdHRyaWI6RmJJZD41MjUyNjU5MTQxNzk1ODA8L0F0dHJpYjpGYklkPgogICAgIDxBdHRyaWI6VG91Y2hUeXBlPjI8L0F0dHJpYjpUb3VjaFR5cGU+CiAgICA8L3JkZjpsaT4KICAgPC9yZGY6U2VxPgogIDwvQXR0cmliOkFkcz4KIDwvcmRmOkRlc2NyaXB0aW9uPgoKIDxyZGY6RGVzY3JpcHRpb24gcmRmOmFib3V0PScnCiAgeG1sbnM6ZGM9J2h0dHA6Ly9wdXJsLm9yZy9kYy9lbGVtZW50cy8xLjEvJz4KICA8ZGM6dGl0bGU+CiAgIDxyZGY6QWx0PgogICAgPHJkZjpsaSB4bWw6bGFuZz0neC1kZWZhdWx0Jz5sb2dvIC0gMTwvcmRmOmxpPgogICA8L3JkZjpBbHQ+CiAgPC9kYzp0aXRsZT4KIDwvcmRmOkRlc2NyaXB0aW9uPgoKIDxyZGY6RGVzY3JpcHRpb24gcmRmOmFib3V0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">
+      <div class="club-name">
+        <h1>CLUBE DE RELAÇÕES INTERNACIONAIS</h1>
+        <span>Escola SESI Djalma Pessoa</span>
+      </div>
+    </div>
+
+    <!-- Botão hambúrguer do lado direito -->
+    <div class="menu-toggle" id="menu-toggle">☰</div>
+
+    <!-- Navegação -->
+    <nav id="menu">
+      <ul>
+        <li><a href="#">Sobre Nós</a></li>
+        <li><a href="#">Galeria</a></li>
+        <li><a href="https://forms.gle/SEU-LINK" class="highlight">Inscrições MUN</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero bg-gradient">
+    <div class="hero-content">
+      <h1>Bem-vindo ao Clube de Relações Internacionais</h1>
+      <p>Escola SESI Djalma Pessoa</p>
+    </div>
+  </section>
+
+  <!-- COMITÊ CSNU -->
+  <section class="committee-header">
+    <h1>Comitê: Escritório das Nações Unidas Sobre Drogas e Crime</h1>
+    <div class="committee-links">
+      <a href="https://forms.gle/SEU-LINK">📄 Inscrição</a> 
+      <a href="#">🌍 Lista de Países</a>
+      <a href="#">📘 Manual</a>
+      <a href="#">📑 Guia de Estudos</a>
+    </div>
+  </section>
+
+  <section class="committee-description">
+    <h2> <p>Tema: Pirataria na Somália - Impactos globais dos crimes marítimos no chifre africano</h2>
+    <p>
+      O Escritório das Nações Unidas sobre Drogas e Crime (UNODC), criado em 1997, é a agência responsável por liderar os esforços internacionais no combate ao crime organizado transnacional, tráfico de drogas, corrupção, terrorismo e crimes cibernéticos. Sua missão é fortalecer a cooperação internacional e apoiar os Estados-membros na criação de políticas de prevenção e justiça criminal. Nas simulações, o UNODC proporciona debates sobre desafios globais contemporâneos, que exigem equilíbrio entre segurança, direitos humanos e desenvolvimento sustentável.
+    </p>
+     <h4>Estrutura e Funcionamento:</h4>
+    <p>
+      O UNODC tem sede em Viena e atua em mais de 80 países por meio de escritórios regionais. Seus trabalhos são guiados pela Comissão de Entorpecentes e pela Comissão de Prevenção ao Crime e Justiça Criminal. Nas simulações, os delegados representam Estados-membros e organismos parceiros, discutindo estratégias multilaterais para enfrentar crimes transnacionais e reduzir os impactos sociais do narcotráfico e da criminalidade organizada.
+    </p>
+  </section>
+
+  <!-- LISTA DE PAÍSES -->
+  <section class="committee-list">
+    <h2>Lista de Países Envolvidos</h2>
+     <h5>COMITÊ INDIVIDUAL!</h5>
+    <p class="note">(Os nomes na cor cinza estão indisponíveis)<br>
+
+
+    <ol class="country-list">
+      <li><a href="#">Emirados Árabes Unidos</a></li>
+      <li><a href="#">Estado do Japão</a></li>
+      <li><a href="#">Estados Unidos da América</a></li>
+      <li><a href="#">Federação Russa</</a></li>
+      <li><a href="#">Reino da Arábia Saudita</a></li>
+      <li><a href="#">Reino Unido da Grã-Bretanha e Irlanda do Norte</a></li>
+      <li><a href="#">República Árabe do Egito</a></li>
+      <li><a href="#">República da África do Sul</></li>
+      <li><a href="#">República da Coreia</a></li>
+      <li><a href="#">Reino da Espanha</a></li> 
+      <li><a href="#">República do Iêmen</a></li> 
+      <li><a href="#">República do Quênia</a></li> 
+      <li><a href="#">República Federal da Alemanha</a></li> 
+      <li><a href="#">República Popular da China</a></li> 
+      <li><a href="#">República Federativa do Brasil</a></li> 
+      <li><a href="#">República da França</a></li>
+      <li><a href="#">República da Índia</a></li>
+      <li><a href="#">República da Turquia</a></li>
+      <li><a href="#">República das Seicheles</a></li>
+      <li><a href="#">República do Djibuti</a></li>
+      <li><a href="#">República Popular de Bangladesh
+      </a></li>
+      <li><a href="#">República Federal da Somália</a></li>
+      <!-- resto da lista -->
+    </ol>
+  </section>
+
+  <!-- RODAPÉ -->
+  <footer class="footer">
+    <p>Todos os direitos reservados ao CRI SESI Piatã ®</p>
+  </footer>
+
+  <!-- SCRIPT MENU HAMBÚRGUER -->
+  <script>
+    const toggle = document.getElementById("menu-toggle");
+    const menu = document.getElementById("menu");
+
+    toggle.addEventListener("click", () => {
+      menu.classList.toggle("active");
+    });
+  </script>
+
+</body>
+</html>
